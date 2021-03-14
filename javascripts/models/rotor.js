@@ -1,11 +1,10 @@
 class Rotor {
-  constructor(wirings) {
+  constructor(label, wirings) {
+    this.label = label;
+    this.setting = 0;
     this.wirings = wirings;
-    this.setting = 'a';
-    this.reversed = {};
-    for (const [key, value] of Object.entries(wirings)) {
-      this.reversed[value] = key;
-    }
+    this.reversed = new Array(26);
+    for(var i = 0; i < 26; i++) this.reversed[this.wirings[i]] = i;
   }
 
   change_setting(new_setting) {
@@ -13,43 +12,27 @@ class Rotor {
   }
 
   spin() {
-    if(this.setting === 'z') {
-      this.setting = 'a';
+    if(this.setting === 25) {
+      this.setting = 0;
     } else {
-      this.setting = String.fromCharCode(this.setting.charCodeAt(0)+1);
+      this.setting++;
     }
     return this.setting;
   }
 
-  get_position_from_character(character) {
-    var position = 0;
-    var c = this.setting;
-    while (c !== character) {
-      if (c === 'z') {
-        c = 'a';
-      } else {
-        c = String.fromCharCode(c.charCodeAt(0)+1);
-      }
-      position++;
-    }
-    return position;
+  get_letter_from_number(number) {
+    return String.fromCharCode(number + CHAR_CODE_OF_A);
   }
 
-  get_character_from_position(position) {
-    var character = this.setting;
-    for (let i = 0; i < position; i++) {
-      if (character === 'z') {
-        character = 'a';
-      } else {
-        character = String.fromCharCode(character.charCodeAt(0)+1);
-      }      
-    }
-    return character;
+  setting_as_letter() {
+    return this.get_letter_from_number(this.setting);
   }
 
-  route(input) {
-    var char_in = this.get_character_from_position(input);
-    var char_out = this.wirings[char_in];
-    return this.get_position_from_character(char_out);
+  route_forward(input) {
+    return this.wirings[input];
+  }
+
+  route_reversed(input) {
+    return this.reversed[input];
   }
 }
