@@ -12,9 +12,9 @@ class EnigmaMachine {
 
     this.reflector = [12, 24, 7, 19, 15, 9, 10, 2, 22, 5, 6, 23, 0, 18, 21, 4, 17, 16, 13, 3, 25, 14, 8, 11, 1, 20];
 
-    this.right_rotor = null;
-    this.center_rotor = null;
-    this.left_rotor = null;
+    this.right_rotor = this.rotor1;
+    this.center_rotor = this.rotor2;
+    this.left_rotor = this.rotor3;
   }
 
   put_rotor_in_position(rotor, position) {

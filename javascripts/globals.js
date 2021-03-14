@@ -1,8 +1,8 @@
 const CANVAS_WIDTH = window.innerWidth;
 const CANVAS_HEIGHT = window.innerHeight;
-const CHAR_CODE_OF_A = 97 // 97 to output lower case. 65 to ouput upper case.
+const CHAR_CODE_OF_A = 97; // 97 to output lower case. 65 to ouput upper case.
 
-var canvas = document.getElementById("canvas");
+var canvas = document.querySelector("canvas");
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 

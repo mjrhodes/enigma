@@ -7,10 +7,10 @@ class TestController {
     var rotor = new Rotor("TEST", [17, 11, 18, 12, 21, 23, 0, 25, 9, 15, 14, 16, 7, 2, 5, 13, 1, 22, 6, 3, 24, 19, 20, 10, 8, 4]);
     rotor.change_setting(7);
     if(rotor.setting != 7) this.failures.push("Failed to change setting: expected 7 got " + rotor.setting);
-    if(rotor.get_letter_from_number(0) !== 'A') this.failures.push("Failed to get 'A' from 0: expected 'A' got '" + rotor.get_letter_from_number(0) + "'");
-    if(rotor.get_letter_from_number(25) !== 'Z') this.failures.push("Failed to get 'Z' from 25: expected 'Z' got '" + rotor.get_letter_from_number(25) + "'");
-    if(rotor.get_letter_from_number(rotor.setting) !== 'H') this.failures.push("Failed to get 'H' from setting: expected 'H' got '" + rotor.get_letter_from_number(rotor.setting) + "'");
-    if(rotor.setting_as_letter() !== 'H') this.failures.push("Failed to get 'H' from setting as letter: expected 'H' got '" + rotor.setting_as_letter() + "'");
+    if(rotor.get_letter_from_number(0).toUpperCase() !== 'A') this.failures.push("Failed to get 'A' from 0: expected 'A' got '" + rotor.get_letter_from_number(0).toUpperCase() + "'");
+    if(rotor.get_letter_from_number(25).toUpperCase() !== 'Z') this.failures.push("Failed to get 'Z' from 25: expected 'Z' got '" + rotor.get_letter_from_number(25).toUpperCase() + "'");
+    if(rotor.get_letter_from_number(rotor.setting).toUpperCase() !== 'H') this.failures.push("Failed to get 'H' from setting: expected 'H' got '" + rotor.get_letter_from_number(rotor.setting).toUpperCase() + "'");
+    if(rotor.setting_as_letter().toUpperCase() !== 'H') this.failures.push("Failed to get 'H' from setting as letter: expected 'H' got '" + rotor.setting_as_letter().toUpperCase() + "'");
 
     rotor.spin();
     if(rotor.setting != 8) this.failures.push("Failed to spin from 7: expected 8 got " + rotor.setting);
